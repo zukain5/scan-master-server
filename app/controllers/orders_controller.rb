@@ -4,6 +4,15 @@ class OrdersController < ApplicationController
     render status: :ok, json: @orders, methods: :order_items
   end
 
+  def show
+    order = Order.find_by(id: params[:id])
+    if order
+      render status: :ok, json: order, methods: :order_items
+    else
+      render status: :not_found, nothing: true
+    end
+  end
+
   def create
     @order = Order.new(
       store_id: params[:store_id],
