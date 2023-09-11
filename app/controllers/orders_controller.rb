@@ -1,4 +1,9 @@
 class OrdersController < ApplicationController
+  def index
+    @orders = Order.all
+    render status: :ok, json: @orders, methods: :order_items
+  end
+
   def create
     @order = Order.new(
       store_id: params[:store_id],
