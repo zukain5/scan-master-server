@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
       user_id: params[:user_id],
       total_points: params[:total_points],
     )
-    order_items = params[:items].map do |item|
+    order_items = params[:order_items].map do |item|
       {
         product_id: item[:product_id],
         quantity: item[:quantity],
