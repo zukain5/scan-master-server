@@ -16,8 +16,8 @@ users = %w[
 ]
 
 stores = %w[
-  S珈琲 恵比寿店
-  M&W 恵比寿店
+  S珈琲恵比寿店
+  M&W恵比寿店
 ]
 
 products.each do |name, price|
