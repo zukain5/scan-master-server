@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :products
   resources :users
   resources :orders
+  post 'link', to: 'link#create'
 end
