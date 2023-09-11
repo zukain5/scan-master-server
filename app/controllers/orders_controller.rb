@@ -18,9 +18,7 @@ class OrdersController < ApplicationController
       store_id: params[:store_id],
       total_points: params[:total_points],
     )
-    if params[:user_id].present?
-      order.user_id = params[:user_id]
-    end
+    order.user_id = params[:user_id] if params[:user_id]
     order_items = params[:order_items].map do |item|
       {
         product_id: item[:product_id],
