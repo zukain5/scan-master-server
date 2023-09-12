@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   post 'link', to: 'link#create'
   get 'histories/:user_id', to: 'histories#show'
   get 'ping', to: 'ping#index'
+  get 'recommends/:user_id', to: 'recommends#show'
 end
