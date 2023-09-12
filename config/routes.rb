@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   resources :orders
   post 'link', to: 'link#create'
   get 'histories/:user_id', to: 'histories#show'
+  get 'ping', to: 'ping#index'
 end
