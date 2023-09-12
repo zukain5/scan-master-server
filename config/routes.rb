@@ -5,9 +5,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :products
-  resources :users
-  resources :orders
+  resources :products, only: %i[index show]
+  resources :users, only: %i[index show]
+  resources :orders, only: %i[index show create]
   post 'link', to: 'link#create'
   get 'histories/:user_id', to: 'histories#show'
   get 'ping', to: 'ping#index'
