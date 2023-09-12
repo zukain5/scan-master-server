@@ -21,13 +21,13 @@ stores = %w[
 ]
 
 products.each do |name, price|
-  Product.create(name:, price:)
+  Product.create(name:, price:) unless Product.find_by(name:)
 end
 
 users.each do |name|
-  User.create(name:)
+  User.create(name:) unless User.find_by(name:)
 end
 
 stores.each do |name|
-  Store.create(name:)
+  Store.create(name:) unless Store.find_by(name:)
 end
