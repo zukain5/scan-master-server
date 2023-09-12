@@ -12,15 +12,12 @@ services:
     tty: true
     stdin_open: true
   db:
-    image: mysql:8.1
-    platform: linux/amd64
-    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+    image: postgres
     volumes:
-      - db-volume:/var/lib/mysql
+      - db-volume:/var/lib/postgressql/data
     environment:
-      MYSQL_ROOT_PASSWORD: password
-      TZ: "Asia/Tokyo"
-    ports:
-      - "3306:3306"
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    restart: always
 volumes:
   db-volume:
