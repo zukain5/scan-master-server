@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :users
   resources :orders
   post 'link', to: 'link#create'
+  get 'histories/:user_id', to: 'histories#show'
 end
