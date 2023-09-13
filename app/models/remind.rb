@@ -4,6 +4,8 @@ class Remind < ApplicationRecord
 
   class << self
     def create_from_order(order)
+      return unless order.user
+
       products = order.order_items.map(&:product)
       products.each do |product|
         next unless product.duration_days
