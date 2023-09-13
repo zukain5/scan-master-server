@@ -3,7 +3,7 @@ class CreateReviews < ActiveRecord::Migration[7.0]
     create_table :reviews do |t|
       t.references :product, null: false, foreign_key: true
       t.references :user, null: false, foreign_key: true
-      t.boolean :like
+      t.boolean :like, null: false, default: true
 
       t.timestamps
     end
