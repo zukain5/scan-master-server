@@ -14,11 +14,12 @@ class OrdersController < ApplicationController
   end
 
   def create
+    store = Store.find(params[:store_id])
     order = Order.new(
-      store_id: params[:store_id],
+      store:,
       total_points: params[:total_points],
     )
-    order.user_id = params[:user_id] if params[:user_id]
+    order.user = User.find(params[:user_id]) if params[:user_id]
     order_items = params[:order_items].map do |item|
       {
         product_id: item[:product_id],
