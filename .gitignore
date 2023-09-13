@@ -30,3 +30,4 @@
 
 .env
 /swagger/*
+db/seeds.rb
