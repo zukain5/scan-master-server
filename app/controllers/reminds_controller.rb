@@ -1,6 +1,7 @@
 class RemindsController < ApplicationController
-  def show
-    reminds = Remind.where(user_id: params[:user_id])
+  def index
+    user = User.find(params[:user_id])
+    reminds = Remind.where(user:)
     render status: :ok, json: reminds
   end
 end
