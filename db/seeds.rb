@@ -1,11 +1,16 @@
 products = [
-  ['エスプレッソ', 560],
-  ['抹茶ラテ', 670],
-  ['カフェラテ', 580],
-  ['カプチーノ', 580],
-  ['アイスコーヒー', 500],
-  ['インスタントコーヒー', 500],
-  ['インド産コーヒー豆', 500],
+  ['エスプレッソ', 560, false],
+  ['抹茶ラテ', 670, false],
+  ['カフェラテ', 580, false],
+  ['カプチーノ', 580, false],
+  ['アイスコーヒー', 500, false],
+  ['インスタントコーヒー', 500, true],
+  ['インド産コーヒー豆', 500, true],
+  ['コロンビア産コーヒー豆', 500, true],
+  ['ブラジル産コーヒー豆', 550, true],
+  ['モカコーヒー豆', 600, true],
+  ['ドリッパー', 1100, true],
+  ['フレンチプレス', 1500, true],
 ]
 
 users = %w[
@@ -20,8 +25,8 @@ stores = %w[
   M&W恵比寿店
 ]
 
-products.each do |name, price|
-  Product.create(name:, price:) unless Product.find_by(name:)
+products.each do |name, price, is_ec|
+  Product.create(name:, price:, is_ec:) unless Product.find_by(name:)
 end
 
 users.each do |name|
