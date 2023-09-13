@@ -27,6 +27,7 @@ class OrdersController < ApplicationController
     end
     order.order_items.build(order_items)
     order.save
+    Remind.create_from_order(order)
     render status: :ok, json: order, methods: :order_items
   end
 end
