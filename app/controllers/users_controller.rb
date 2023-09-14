@@ -1,15 +1,11 @@
 class UsersController < ApplicationController
   def index
     @users = User.all
-    render :ok, json: @users
+    render :ok, json: @users, methods: :points
   end
 
   def show
-    @user = User.find_by(id: params[:id])
-    if @user
-      render :ok, json: @user
-    else
-      render :not_found, json: {}
-    end
+    @user = User.find(params[:id])
+    render :ok, json: @user, methods: :points
   end
 end
