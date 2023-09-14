@@ -17,4 +17,13 @@ class UsersController < ApplicationController
       render status: :internal_server_error, nothing: true
     end
   end
+
+  def destroy
+    user = User.find(params[:id])
+    if user.destroy
+      render status: :no_content, nothing: true
+    else
+      render status: :internal_server_error, nothing: true
+    end
+  end
 end
