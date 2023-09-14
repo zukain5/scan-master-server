@@ -15,5 +15,5 @@ Rails.application.routes.draw do
   get 'recommends/:user_id', to: 'recommends#show'
   get 'reminds/:user_id', to: 'reminds#show'
   post 'reviews', to: 'reviews#post'
-  get 'reviews', to: 'reviews#index'
+  get 'reviews/:user_id', to: 'reviews#show'
 end

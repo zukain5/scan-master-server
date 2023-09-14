@@ -1,13 +1,8 @@
 class ReviewsController < ApplicationController
-  def index
+  def show
     user = User.find(params[:user_id])
-    product = Product.find(params[:product_id])
-    review = Review.find_by(user:, product:)
-    if review
-      render status: :ok, json: review
-    else
-      render status: :not_found, nothing: true
-    end
+    reviews = Review.where(user:)
+    render status: :ok, json: reviews
   end
 
   def post
