@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id]).includes(:orders)
+    @user = User.find(params[:id])
     render :ok, json: @user, methods: :points
   end
 end
