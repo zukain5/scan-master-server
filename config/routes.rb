@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   get 'reminds/:user_id', to: 'reminds#show'
   post 'reviews', to: 'reviews#post'
   get 'reviews/:user_id', to: 'reviews#show'
+  delete 'users/:user_id/orders', to: 'orders#destroy'
 end
