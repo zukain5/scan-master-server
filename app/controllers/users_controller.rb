@@ -8,4 +8,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     render :ok, json: @user, methods: :points
   end
+
+  def create
+    user = User.new(name: params[:name])
+    if user.save
+      render status: :ok, json: user, methods: :points
+    else
+      render status: :internal_server_error, nothing: true
+    end
+  end
 end
