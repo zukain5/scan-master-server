@@ -21,13 +21,24 @@ class OrdersController < ApplicationController
     )
     order.user = User.find(params[:user_id]) if params[:user_id]
     order_items = params[:order_items].map do |item|
+      product = Product.find(item[:product_id])
       {
-        product_id: item[:product_id],
+        product:,
         quantity: item[:quantity],
       }
     end
     order.order_items.build(order_items)
     order.save
     render status: :ok, json: order, methods: :order_items
+  end
+
+  def destroy
+    user = User.find(params[:user_id])
+    orders = Order.where(user:)
+    if orders.destroy_all
+      render status: :no_content, nothing: true
+    else
+      render status: :internal_server_error, nothing: true
+    end
   end
 end
