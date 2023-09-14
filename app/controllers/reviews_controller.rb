@@ -27,7 +27,7 @@ class ReviewsController < ApplicationController
     review = Review.new(
       user:,
       product:,
-      like: params[:like],
+      like: bool_like(params[:like]),
     )
     if review.save
       render status: :ok, json: review
@@ -37,7 +37,7 @@ class ReviewsController < ApplicationController
   end
 
   def update(review, like)
-    if review.update(like:)
+    if review.update(like: bool_like(like))
       render status: :ok, json: review
     else
       render status: :internal_server_error, nothing: true
@@ -49,5 +49,11 @@ class ReviewsController < ApplicationController
       render status: :no_content, nothing: true
     else
       render status: :internal_server_error, nothing: true
+  end
+
+  def bool_like(int_like)
+    return ture if int_like == 1
+    return false if int_like == -1
+    true
   end
 end
