@@ -8,10 +8,11 @@ Rails.application.routes.draw do
   resources :products, only: %i[index show]
   resources :users, only: %i[index show]
   resources :orders, only: %i[index show create]
-  resources :reviews, only: %i[index post]
   post 'link', to: 'link#create'
   get 'histories/:user_id', to: 'histories#show'
   get 'ping', to: 'ping#index'
   get 'recommends/:user_id', to: 'recommends#show'
   get 'reminds/:user_id', to: 'reminds#show'
+  post 'reviews', to: 'reviews#post'
+  get 'reviews', to: 'reviews#index'
 end
