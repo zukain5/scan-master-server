@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   def index
-    @orders = Order.all
+    @orders = Order.order(created_at: :desc)
     render status: :ok, json: @orders, methods: :order_items
   end
 
