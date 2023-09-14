@@ -2,8 +2,12 @@ class ReviewsController < ApplicationController
   def index
     user = User.find(params[:user_id])
     product = Product.find(params[:product_id])
-    review = Review.find(user:, product:)
-    render status: :ok, json: review
+    review = Review.find_by(user:, product:)
+    if review
+      render status: :ok, json: review
+    else
+      render status: :not_found, nothing: true
+    end
   end
 
   def post
@@ -49,11 +53,13 @@ class ReviewsController < ApplicationController
       render status: :no_content, nothing: true
     else
       render status: :internal_server_error, nothing: true
+    end
   end
 
   def bool_like(int_like)
-    return ture if int_like == 1
+    return true if int_like == 1
     return false if int_like == -1
+
     true
   end
 end
