@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   get 'ping', to: 'ping#index'
   get 'recommends/:user_id', to: 'recommends#show'
   get 'reminds/:user_id', to: 'reminds#show'
+  post 'reviews', to: 'reviews#post'
+  get 'reviews', to: 'reviews#index'
 end
