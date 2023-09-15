@@ -1,7 +1,8 @@
 class RemindsController < ApplicationController
   def show
     user = User.find(params[:user_id])
-    items = Order.where(user:).map(&:order_items).flatten
+    orders = Order.where(user:)
+    items = OrderItem.where(order: orders).order(created_at: :desc)
     reminds = items.map do |item|
       next unless item.product.duration_days
 
